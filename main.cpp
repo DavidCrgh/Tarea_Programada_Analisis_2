@@ -7,7 +7,5 @@ int main(int argc, char *argv[])
     VentanaPrincipal w;
     w.show();
 
-    //PRUEBA
-
     return a.exec();
 }
