@@ -6,6 +6,11 @@ VentanaPrincipal::VentanaPrincipal(QWidget *parent) :
     ui(new Ui::VentanaPrincipal)
 {
     ui->setupUi(this);
+
+    //Se ponen validaciones de entradas numericas
+    ui->entradaCuadrado->setValidator(new QIntValidator(this));
+    ui->entradaEsperanzaVida->setValidator(new QIntValidator(this));
+    ui->entradaMaxGeneraciones->setValidator(new QIntValidator(this));
 }
 
 VentanaPrincipal::~VentanaPrincipal()
