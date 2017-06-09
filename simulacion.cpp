@@ -5,6 +5,12 @@ Simulacion::Simulacion()
     generacion = 0;
     sumaFitness = 0;
     tamannoPoblacion = 0;
+    cuadradoMagico = NULL;
+}
+
+double Simulacion::calcularFitnessPromedio(){
+    return (((double) sumaFitness / (double) tamannoPoblacion) /
+            ((double)(2*tamannoMatriz + 2))) * 100;
 }
 
 QList<Matriz*> Simulacion::crearPoblacion(QList<int> numerosNecesarios,
@@ -30,11 +36,11 @@ QList<Matriz*> Simulacion::seleccionNatural(QList<Matriz *> poblacion,
     {
         int fitnessMatriz =poblacion.at(i)->fitness;
         double div = (double)fitnessMatriz/(double)fitnessMaximo;
-         int porFitness = floor(div*100.00);
-         for(int j = 0;j<porFitness;j++)
-         {
-              bucket.append(poblacion.at(i));
-         }
+        int porFitness = floor(div*100.00);
+        for(int j = 0;j<porFitness;j++)
+        {
+            bucket.append(poblacion.at(i));
+        }
     }
     return bucket;
 }
@@ -54,7 +60,7 @@ QList<Matriz*> Simulacion::cruzarPoblacion(int tamPoblacion,int tamBucket,
 
         Matriz * Father = bucket.at(a);
         Matriz * Mother = bucket.at(b);
-        int tamUniversal = Father->getTam();
+        int tamUniversal = Father->getTamanno();
 
         QList<int> vFather = pasarAVector(Father);
         QList<int> vMother = pasarAVector(Mother);
@@ -79,7 +85,7 @@ QList<Matriz*> Simulacion::cruzarPoblacion(int tamPoblacion,int tamBucket,
         {
             hijoMatriz->mutacion();
         }
-        hijoMatriz->fitness = hijoMatriz->funcFitness(numeroMagico);
+        hijoMatriz->fitness = hijoMatriz->funcionFitness(numeroMagico);
         poblacion.push_front(hijoMatriz);
 
         Matriz * hijaMatriz = new Matriz(tamUniversal);
@@ -93,7 +99,7 @@ QList<Matriz*> Simulacion::cruzarPoblacion(int tamPoblacion,int tamBucket,
         {
             hijaMatriz->mutacion();
         }
-        hijaMatriz->fitness = hijaMatriz->funcFitness(numeroMagico);
+        hijaMatriz->fitness = hijaMatriz->funcionFitness(numeroMagico);
         poblacion.push_front(hijaMatriz);
     }
     return poblacion;
@@ -165,7 +171,7 @@ QList<int> Simulacion::pasarAVector(Matriz * matriz)
 {
 
     QList<int> vSalida;
-    int tam = matriz->getTam();
+    int tam = matriz->getTamanno();
     for (int i = 0; i<tam;i++){
         for(int j = 0; j<tam;j++){
 

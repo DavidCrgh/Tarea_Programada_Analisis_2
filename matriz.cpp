@@ -17,7 +17,7 @@ void Matriz::setFitness(int value)
 
 Matriz::Matriz(int tama, QList<int> numeros,int constanteMagica)
 {
-    this->setTam(tama);
+    this->setTamanno(tama);
     int tamRandom = tama*tama-1;
 
     //Controla las filas
@@ -43,12 +43,12 @@ Matriz::Matriz(int tama, QList<int> numeros,int constanteMagica)
         }
         this->matrizDatos.append(filas);
     }
-        this->fitness = this->funcFitness(constanteMagica);
+        this->fitness = this->funcionFitness(constanteMagica);
 }
 
 Matriz::Matriz(int tama)
 {
-    this->tam = tama;
+    this->tamanno = tama;
      QList<int> filas;
      filas.append(2);
      filas.append(7);
@@ -70,7 +70,7 @@ Matriz::Matriz(int tama)
 
 void Matriz::imprimir()
 {
-    int t = this->getTam();
+    int t = this->getTamanno();
     for(int i = 0;i<t;i++)
     {
         //Controla las columnas
@@ -84,19 +84,19 @@ void Matriz::imprimir()
 
 
 
-int Matriz::getTam() const
+int Matriz::getTamanno() const
 {
-    return tam;
+    return tamanno;
 }
-int Matriz::funcFitness(int numeroMagico)
+int Matriz::funcionFitness(int numeroMagico)
 {
     int score = 0;
         //Saca el score de las filas
     int resul;
-        for(int i =0;i<this->tam;i++)
+        for(int i =0;i<this->tamanno;i++)
         {
             resul = 0;
-            for(int j =0;j<this->tam;j++)
+            for(int j =0;j<this->tamanno;j++)
             {
                resul += this->matrizDatos.at(i).at(j);
             }
@@ -109,10 +109,10 @@ int Matriz::funcFitness(int numeroMagico)
 
         //Saca el score de las columnas
 
-        for(int i =0;i<this->tam;i++)
+        for(int i =0;i<this->tamanno;i++)
         {
              resul = 0;
-            for(int j =0;j<this->tam;j++)
+            for(int j =0;j<this->tamanno;j++)
             {
                resul += this->matrizDatos.at(j).at(i);
             }
@@ -125,7 +125,7 @@ int Matriz::funcFitness(int numeroMagico)
         //Saca el score de las diagonales
         //Diagonal
         resul = 0;
-        for(int i =0;i<this->tam;i++)
+        for(int i =0;i<this->tamanno;i++)
         {
            resul += this->matrizDatos.at(i).at(i);
         }
@@ -135,8 +135,8 @@ int Matriz::funcFitness(int numeroMagico)
         }
         //Diagonal inversa
         resul = 0;
-        int temp = this->tam-1;
-        for(int i =0;i<this->tam;i++)
+        int temp = this->tamanno-1;
+        for(int i =0;i<this->tamanno;i++)
         {
 
             resul += this->matrizDatos.at(i).at(temp);
@@ -152,9 +152,9 @@ int Matriz::funcFitness(int numeroMagico)
 
 }
 
-void Matriz::setTam(int value)
+void Matriz::setTamanno(int value)
 {
-    tam = value;
+    tamanno = value;
 }
 
 QList<QList<int> > Matriz::getMatrizDatos() const
@@ -168,11 +168,11 @@ void Matriz::setMatrizDatos(const QList<QList<int> > &value)
 }
 void Matriz::mutacion()
 {
-    int indice1 = rand()%this->tam;
-    int indice2 = rand()%this->tam;
+    int indice1 = rand()%this->tamanno;
+    int indice2 = rand()%this->tamanno;
 
-    int indice3 = rand()%this->tam;
-    int indice4 = rand()%this->tam;
+    int indice3 = rand()%this->tamanno;
+    int indice4 = rand()%this->tamanno;
 
     int num1 = this->matrizDatos.at(indice1).at(indice2);
     int num2 = this->matrizDatos.at(indice3).at(indice4);

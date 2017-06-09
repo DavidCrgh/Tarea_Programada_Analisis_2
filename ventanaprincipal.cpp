@@ -29,13 +29,11 @@ VentanaPrincipal::VentanaPrincipal(QWidget *parent) :
 
 void VentanaPrincipal::actualizarInterfaz(){
     QString textoGeneracion = "Generacion ";
-    textoGeneracion.append(QString::number(simulacion->generacion));
+    textoGeneracion.append(QString::number(simulacion->generacion + 1));
     ui->labelGeneracion->setText(textoGeneracion);
 
     QString textoFitness = "Fitness Promedio: ";
-    double promedioFitness = simulacion->sumaFitness
-            / simulacion->tamannoPoblacion;
-    textoFitness.append(QString::number(promedioFitness));
+    textoFitness.append(QString::number(simulacion->calcularFitnessPromedio()));
     textoFitness.append("%");
     ui->labelFitness->setText(textoFitness);
 }
@@ -47,7 +45,26 @@ void VentanaPrincipal::resetearSimulacion(){
 }
 
 void VentanaPrincipal::cuadradoEncontrado(){
+    pintarMatriz(simulacion->tamannoMatriz, simulacion->cuadradoMagico);
+}
 
+void VentanaPrincipal::pintarMatriz(int n, Matriz* matriz){
+    delete ui->scrollAreaWidgetContents->layout();
+    QVBoxLayout* layoutVertical = new QVBoxLayout();
+    QTableWidget* table = new QTableWidget(n,n);
+
+    int celdaActual;
+    QString valorActual;
+
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            celdaActual = matriz->matrizDatos.at(i).at(j);
+            valorActual = QString::number(celdaActual);
+            table->setItem(i, j, new QTableWidgetItem(valorActual));
+        }
+    }
+    layoutVertical->addWidget(table);
+    ui->scrollAreaWidgetContents->setLayout(layoutVertical);
 }
 
 void VentanaPrincipal::obtenerEntradas(){

@@ -4,6 +4,7 @@
 #include <QMutex>
 #include <QObject>
 #include <QThread>
+#include <QtAlgorithms>
 
 #include "simulacion.h"
 

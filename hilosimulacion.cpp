@@ -59,6 +59,7 @@ void HiloSimulacion::run(){
             if (resultadoFinal == fitnessActual)
             {
                 //Aqui se debe presentar en pantalla es la solucion
+                simulacion->cuadradoMagico = poblacion.at(i);
                 poblacion.at(i)->imprimir();
                 encontrado = true;
                 break;
@@ -95,7 +96,7 @@ void HiloSimulacion::run(){
         while(tamanoPoblacion > simulacion->maximoPoblacion)
         {
             int indice = rand() % tamanoPoblacion;
-            poblacion.takeAt(indice);
+            delete poblacion.takeAt(indice);
             tamanoPoblacion = poblacion.size();
         }
 

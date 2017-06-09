@@ -24,10 +24,13 @@ public:
     long sumaFitness;
     long tamannoPoblacion;
 
+    Matriz* cuadradoMagico;
+
     //Constructores
     Simulacion();
 
     //Metodos
+    double calcularFitnessPromedio();
     QList<QList<int>*> cruzar(QList<int> padre1, QList<int> padre2);
     void revisarNoMapeados(QList<int>* hijo, QHash<int, int> mapeo,
                            int inicioMapeo, int finMapeo);

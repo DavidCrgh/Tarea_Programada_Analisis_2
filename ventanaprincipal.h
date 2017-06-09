@@ -2,6 +2,8 @@
 #define VENTANAPRINCIPAL_H
 
 #include <QMainWindow>
+#include <QTableWidget>
+#include <QTableWidgetItem>
 
 #include "hilosimulacion.h"
 
@@ -19,6 +21,8 @@ public:
 
     Simulacion* simulacion;
     HiloSimulacion* hiloSimulacion;
+
+    void pintarMatriz(int n, Matriz* matriz);
 
 private slots:
     void actualizarInterfaz();
