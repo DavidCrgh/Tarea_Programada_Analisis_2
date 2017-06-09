@@ -48,7 +48,7 @@
      <string>■</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="botonPausa">
+   <widget class="QPushButton" name="botonResumir">
     <property name="geometry">
      <rect>
       <x>650</x>
@@ -69,7 +69,7 @@
      <string>▶</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="botonResumir">
+   <widget class="QPushButton" name="botonPausa">
     <property name="geometry">
      <rect>
       <x>590</x>
@@ -194,19 +194,42 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QLineEdit" name="entradaCuadrado"/>
+        <widget class="QLineEdit" name="entradaCuadrado">
+         <property name="text">
+          <string>1</string>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QDoubleSpinBox" name="entradaMutacion"/>
+        <widget class="QDoubleSpinBox" name="entradaMutacion">
+         <property name="decimals">
+          <number>3</number>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QSpinBox" name="entradaMaxPoblacion"/>
+        <widget class="QSpinBox" name="entradaMaxPoblacion">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="entradaEsperanzaVida"/>
+        <widget class="QLineEdit" name="entradaEsperanzaVida">
+         <property name="text">
+          <string>1</string>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="entradaMaxGeneraciones"/>
+        <widget class="QLineEdit" name="entradaMaxGeneraciones">
+         <property name="text">
+          <string>1</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -228,7 +251,7 @@
       <x>520</x>
       <y>40</y>
       <width>221</width>
-      <height>131</height>
+      <height>111</height>
      </rect>
     </property>
     <property name="title">
@@ -240,7 +263,7 @@
        <x>10</x>
        <y>20</y>
        <width>201</width>
-       <height>101</height>
+       <height>81</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -274,13 +297,6 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="labelGeneraciones">
-          <property name="text">
-           <string>Generaciones Efectuadas: X</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QLabel" name="labelVelocidad">
           <property name="text">
            <string>Velocidad: X</string>
@@ -302,8 +318,8 @@
    <zorder>groupBox</zorder>
    <zorder>botonAbrirArchivo</zorder>
    <zorder>botonDetener</zorder>
-   <zorder>botonPausa</zorder>
    <zorder>botonResumir</zorder>
+   <zorder>botonPausa</zorder>
    <zorder>labelIndividuo</zorder>
    <zorder>scrollAreaIndividuo</zorder>
    <zorder>controlSimulacion</zorder>

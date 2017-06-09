@@ -25,9 +25,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         ventanaprincipal.cpp \
-    hiloevolucion.cpp
+    simulacion.cpp \
+    matriz.cpp \
+    hilosimulacion.cpp
 
 HEADERS  += ventanaprincipal.h \
-    hiloevolucion.h
+    simulacion.h \
+    matriz.h \
+    hilosimulacion.h
 
 FORMS    += ventanaprincipal.ui
